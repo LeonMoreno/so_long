@@ -25,7 +25,7 @@ typedef struct s_img_map {
 
 typedef struct s_sprite {
 	void 	*id;
-	t_vector	sp_sz;
+	t_vector	size;
 	char		*bits;
 	int			bits_per_pixel;
 	int			sz_line;
@@ -44,8 +44,10 @@ typedef struct s_game {
 	t_img_map	edge_dr;
 	t_img_map	edge_iz;
 	t_img_map	edge_bottom;
-	t_sprite	sprite;
-	t_vector	sprite_position;
+	t_img_map	exit;
+	t_sprite	player;
+	t_vector	p_position;
+	t_vector	e_position;
 	int			colle;
 	int			p_start;
 	char 		**map;
@@ -64,6 +66,7 @@ int get_map_size_y(int fd);
 void game_init(t_game *game);
 void new_window(t_game *game, char *msg);
 void xpm_image(t_game *game);
+void render_start(t_game *game);
 
 // Misc
 void error(char *s);

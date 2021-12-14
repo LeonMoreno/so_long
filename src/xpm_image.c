@@ -1,5 +1,13 @@
 #include "so_long.h"
 
+t_sprite open_sprites(void *mlx, char *file)
+{
+	t_sprite	sprite;
+
+	sprite.id = mlx_xpm_file_to_image(mlx, file, &sprite.size.x, &sprite.size.y);
+	return (sprite);
+}
+
 t_img_map open_img_map(void *mlx, char *file)
 {
 	t_img_map	img_map;
@@ -32,4 +40,10 @@ void xpm_image(t_game *game)
 	// borde Inferior 
 	game->edge_bottom = open_img_map(game->mlx, "sprites/edge_bottom.xpm");
 
+	// Exit 
+	game->exit = open_img_map(game->mlx, "sprites/exit.xpm");
+	
+	// Player 
+	game->player = open_sprites(game->mlx, "sprites/ant_player.xpm");
+	
 }
