@@ -3,14 +3,11 @@
 
 #include <mlx.h>
 #include <fcntl.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include <stdio.h>
 
 #include "../libft/include/libft.h"
 
-#define WIN_W 40
-#define WIN_H 40
+#define WIN_W 60
+#define WIN_H 60
 
 
 // Estructuras
@@ -23,7 +20,7 @@ typedef struct s_vector {
 // Imagen del map
 typedef struct s_img_map {
 	void 		*id;
-	t_vector	imap_sz;
+	t_vector	size;
 }	t_img_map;
 
 typedef struct s_sprite {
@@ -40,8 +37,13 @@ typedef struct s_game {
 	void 		*wnd;
 	t_vector	wnd_sz;	
 	t_vector	map_size;
-	t_img_map	wall_up_map;
-	t_img_map	centro_map;
+	t_img_map	edge_up;
+	t_img_map	centro;
+	t_img_map	edge_up_dr;
+	t_img_map	edge_up_iz;
+	t_img_map	edge_dr;
+	t_img_map	edge_iz;
+	t_img_map	edge_bottom;
 	t_sprite	sprite;
 	t_vector	sprite_position;
 	int			colle;
@@ -52,14 +54,16 @@ typedef struct s_game {
 //Map functions
 t_game		init_map(char *map);
 int			open_map(char *map);
-t_game 		parse_map(int fd);
+void 		parse_map(int fd, t_game *game);
 char *get_next_line(int fd);
 int		check_map(t_game *game);
 int valid_wall(char **str, int last);
+int get_map_size_y(int fd);
 
 // start game
 void game_init(t_game *game);
-void ft_new_window(t_game *game, char *msg);
+void new_window(t_game *game, char *msg);
+void xpm_image(t_game *game);
 
 // Misc
 void error(char *s);

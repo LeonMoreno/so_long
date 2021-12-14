@@ -4,11 +4,11 @@ int open_map(char *map)
 {
 	int fd;
 
-	if(!ft_strnstr(map, "ber", 20))
-	{
-			error("Invalid extension");
-			return(0);
-	}
+//	if(!ft_strnstr(map, "ber", 20))
+//	{
+//			error("Invalid extension");
+//			return(0);
+//	}
 	fd = open(map, O_RDONLY);
 	return (fd);
 }
@@ -24,11 +24,15 @@ t_game init_map(char *map)
 		game.map = NULL;
 		return (game);
 	}
-	game = parse_map(fd);
+	game.map_size.y = get_map_size_y(fd);
+	close (fd);
+	fd = open_map(map);
+	parse_map(fd, &game);
 	if(!check_map(&game))
 	{
 		game.map = NULL;
 		return (game);
 	}
+	close(fd);
 	return (game);
 }

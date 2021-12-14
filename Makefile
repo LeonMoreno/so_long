@@ -5,8 +5,7 @@ INCLUDES	= include/
 SRC_DIR		= src/
 OBJ_DIR		= obj/
 CC 			= gcc
-CFLAGS		= -Wall -Wextra -Werror -I
-FLAGS		= -Wall -Wextra -Werror
+CFLAGS		= -Wall -g -Wextra -Werror -I
 MLX		 	= -lmlx -framework OpenGL -framework AppKit
 RM			= rm -f
 
@@ -29,7 +28,8 @@ WHITE = \033[0;97m
 
 #sources
 
-SRC_FILES	=	main read_map errors parser_map check_map game_start ft_new_window
+SRC_FILES	=	main read_map errors parser_map check_map game_start new_window \
+				xpm_image 
 
 SRC 		= 	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 OBJ 		= 	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))

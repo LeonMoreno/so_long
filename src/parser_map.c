@@ -1,5 +1,18 @@
 #include "so_long.h"
 
+int get_map_size_y(int fd)
+{
+	char *line;
+	int y;
+
+	y = 0;
+	while ((line = get_next_line(fd)) != NULL)
+	{
+		free(line);
+		y++;
+	}
+	return (y);
+}
 
 int get_map_size_x(t_game *game, int y)
 {
@@ -51,32 +64,28 @@ char *get_next_line(int fd)
 		line = tmp;
 	}
 	if (line[0] == '\0')
+	{
+		free (line);
 		return (NULL);
+	}
 	return (line);
 }
 
-t_game parse_map(int fd)
+void parse_map(int fd, t_game *game)
 {
-	t_game game;
 	char *line;
-	int gx;
 	int i;
-	int last;
 
 	i = 0;	
-	last = 0;
-	gx = 1;
-	line = malloc(sizeof(char *) * 1);
-	game.map = malloc(sizeof(char *) * 0);
-	while ((line = get_next_line(fd)) != NULL)
+	game->map = malloc(sizeof(char *) * game->map_size.y);
+	if (!game->map)
+		game->map = NULL;
+	while ((line = get_next_line(fd)))
 	{
-		game.map = realloc(game.map, sizeof(char *) * gx);
-		game.map[i] = line;
-		gx++;
+		game->map[i] = line;
+		line = NULL;
 		i++;
 	}
-	game.map_size.y = i;
-	game.map[i] = NULL;
-	game.map_size.x = get_map_size_x(&game, i);
-	return (game);
+	game->map[i] = NULL;
+	game->map_size.x = get_map_size_x(game, i);
 }
