@@ -1,5 +1,45 @@
 #include "so_long.h"
 
+void render_muro_inter(t_game *game)
+{
+	int y;
+	int x;
+
+	y = 1;
+
+	while(y < game->map_size.y - 1)
+	{
+		x = 1;
+		while(x < game->map_size.x - 1)
+		{
+			if(game->map[y][x] == '1')
+				mlx_put_image_to_window(game->mlx, game->wnd, game->rock.id, x * WIN_W, y * WIN_H);
+			x++;
+		}
+		y++;
+	}
+}
+
+void render_coin(t_game *game)
+{
+	int y;
+	int x;
+
+	y = 1;
+
+	while(y < game->map_size.y - 1)
+	{
+		x = 1;
+		while(x < game->map_size.x - 1)
+		{
+			if(game->map[y][x] == 'C')
+				mlx_put_image_to_window(game->mlx, game->wnd, game->coin.id, x * WIN_W, y * WIN_H);
+			x++;
+		}
+		y++;
+	}
+}
+
 
 void render_sprites(t_game *game)
 {
@@ -66,4 +106,6 @@ void render_start(t_game *game)
 {
 	render_map(game);
 	render_sprites(game);
+	render_muro_inter(game);
+	render_coin(game);
 }

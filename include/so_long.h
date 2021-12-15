@@ -27,7 +27,7 @@ typedef struct s_sprite {
 	void 	*id;
 	t_vector	size;
 	char		*bits;
-	int			bits_per_pixel;
+	int			bpp;
 	int			sz_line;
 	int			endian;
 }	t_sprite;
@@ -44,6 +44,8 @@ typedef struct s_game {
 	t_img_map	edge_dr;
 	t_img_map	edge_iz;
 	t_img_map	edge_bottom;
+	t_img_map	rock;
+	t_img_map	coin;
 	t_img_map	exit;
 	t_sprite	player;
 	t_vector	p_position;
@@ -67,6 +69,10 @@ void game_init(t_game *game);
 void new_window(t_game *game, char *msg);
 void xpm_image(t_game *game);
 void render_start(t_game *game);
+int key_hook(int key, t_game *game);
+int control_player_x(t_game *game, int x);
+int control_player_y(t_game *game, int y);
+
 
 // Misc
 void error(char *s);
