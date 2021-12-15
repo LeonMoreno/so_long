@@ -104,6 +104,7 @@ void render_map(t_game *game)
 
 void render_start(t_game *game)
 {
+	mlx_clear_window(game->mlx, game->wnd);
 	render_map(game);
 	render_sprites(game);
 	render_muro_inter(game);
