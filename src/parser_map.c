@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parser_map.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lmoreno <lmoreno@student.42quebec.>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/12/16 10:56:27 by lmoreno           #+#    #+#             */
+/*   Updated: 2021/12/16 15:00:18 by lmoreno          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
-int get_map_size_y(int fd)
+/*int	get_map_size_y(int fd)
 {
-	char *line;
-	int y;
+	char	*line;
+	int		y;
 
 	y = 0;
 	while ((line = get_next_line(fd)) != NULL)
@@ -12,16 +24,16 @@ int get_map_size_y(int fd)
 		y++;
 	}
 	return (y);
-}
+}*/
 
-int get_map_size_x(t_game *game, int y)
+int	get_map_size_x(t_game *game, int y)
 {
-	int i;
-	int x;
+	int	i;
+	int	x;
 
 	x = 0;
 	i = 0;
-	while(i < y)
+	while (i < y)
 	{
 		x = ft_strlen(game->map[1]);
 		i++;
@@ -29,39 +41,48 @@ int get_map_size_x(t_game *game, int y)
 	return (x);
 }
 
-char *get_next_line(int fd)
+char	*ft_join(char *line, char c, int gx)
 {
-	char *line;
-	char *tmp;
-	char c;
-	int lu;
-	int gx;
-	int i;
-	
+	char	*tmp;
+	int		i;
+
+	i = 0;
+	tmp = malloc(sizeof(char) * gx);
+	if (!tmp)
+	{
+		free(line);
+		return (NULL);
+	}
+	while (i < gx -2)
+	{
+		tmp[i] = line[i];
+		i++;
+	}
+	tmp[i] = c;
+	tmp[++i] = '\0';
+	free(line);
+	line = tmp;
+	return (line);
+}
+
+char	*get_next_line(int fd)
+{
+	char	*line;
+	char	c;
+	int		lu;
+	int		gx;
+
 	gx = 1;
 	line = malloc(sizeof(char) * gx);
 	if (!line)
 		return (NULL);
 	line[0] = '\0';
-	while((lu = read(fd, &c, 1)) && c != '\n')
+	lu = read(fd, &c, 1);
+	while (lu && c != '\n')
 	{
 		gx++;
-		tmp = malloc(sizeof(char) * gx);
-		if (!tmp)
-		{
-			free(line);
-			return(NULL);
-		}
-		i = 0;
-		while (i < gx -2)
-		{
-			tmp[i] = line[i];
-			i++;
-		}
-		tmp[i] = c;
-		tmp[++i] = '\0';
-		free(line);
-		line = tmp;
+		line = ft_join(line, c, gx);
+		lu = read(fd, &c, 1);
 	}
 	if (line[0] == '\0')
 	{
@@ -71,37 +92,30 @@ char *get_next_line(int fd)
 	return (line);
 }
 
-void parse_map(int fd, t_game *game)
+/* POr si falla realloc -> hacer doble read
+//game->map = malloc(sizeof(char *) * game->map_size.y); */
+void	parse_map(int fd, t_game *game)
 {
-	char *line;
-	int i;
-	int gx;
+	char	*line;
+	int		i;
+	int		gx;
 
 	i = 0;
-	gx = 1;	
-	//game->map = malloc(sizeof(char *) * game->map_size.y);
+	gx = 1;
 	game->map = malloc(sizeof(char *) * gx);
 	if (!game->map)
 		game->map = NULL;
-	while ((line = get_next_line(fd)))
+	line = get_next_line(fd);
+	while (line)
 	{
+		gx++;
 		game->map = ft_realloc((void *)game->map, sizeof(char *) * gx);
 		game->map[i] = line;
 		line = NULL;
+		line = get_next_line(fd);
 		i++;
-		gx++;
 	}
-
-	game->map_size.y =  i;
-	
-
+	game->map_size.y = i;
 	game->map[i] = NULL;
 	game->map_size.x = get_map_size_x(game, i);
-
-	i = 0;
-	while (game->map[i])
-	{
-		ft_printf("Linea %d : %s\n", i, game->map[i]);
-		i++;
-	}
 }

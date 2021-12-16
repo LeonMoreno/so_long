@@ -1,19 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   errors.c                                           :+:      :+:    :+:   */
+/*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lmoreno <lmoreno@student.42quebec.>        +#+  +:+       +#+        */
+/*   By: lmoreno <lmoreno@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/16 16:53:32 by lmoreno           #+#    #+#             */
-/*   Updated: 2021/12/16 16:53:46 by lmoreno          ###   ########.fr       */
+/*   Created: 2021/12/16 10:42:43 by lmoreno           #+#    #+#             */
+/*   Updated: 2021/12/16 10:46:13 by lmoreno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-// Mensaje de error comun
-void	error(char *s)
+int	main(int argc, char **argv)
 {
-	ft_printf("Error\n    %s\n", s);
+	t_game	game;
+
+	if (argc == 2)
+	{
+		game = init_map(argv[1]);
+		if (game.map == NULL)
+			return (0);
+		game_init(&game);
+	}
+	else
+		error("Invalid number of arguments");
+	return (0);
 }

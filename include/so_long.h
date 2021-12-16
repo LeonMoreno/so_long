@@ -62,7 +62,13 @@ void 		parse_map(int fd, t_game *game);
 char *get_next_line(int fd);
 int		check_map(t_game *game);
 int valid_wall(char **str, int last);
+int valid_wall_inter(char **str, int last);
 int get_map_size_y(int fd);
+int ft_strchrx(char *str, char c);
+int valid_collec(char **str, int last);
+int valid_point_p(t_game *game);
+int valid_point_e(t_game *game);
+
 
 // start game
 void game_init(t_game *game);

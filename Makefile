@@ -1,6 +1,6 @@
 #Standard
 
-NAME 		= so_long.out
+NAME 		= so_long
 INCLUDES	= include/
 SRC_DIR		= src/
 OBJ_DIR		= obj/
@@ -28,8 +28,8 @@ WHITE = \033[0;97m
 
 #sources
 
-SRC_FILES	=	main read_map errors parser_map check_map game_start new_window \
-				xpm_image render key_hook control_player
+SRC_FILES	=	so_long read_map errors parser_map check_map game_start new_window \
+				xpm_image render key_hook control_player check_map_utils
 
 SRC 		= 	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 OBJ 		= 	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
@@ -57,15 +57,15 @@ $(OBJF):
 clean:
 			@$(RM) -rf $(OBJ_DIR)
 			@make -C $(LIBFT_DIR) clean
-			@echo "$(BLUE)ft_printf objects files cleaned!$(DEF_COLOR)"
+			@echo "$(BLUE)So_Long objects files cleaned!$(DEF_COLOR)"
 
 fclean:		clean
 				@$(RM) -f $(NAME)
 				@make -C $(LIBFT_DIR) fclean
-				@echo "$(CYAN)ft_Printf executable files cleaned!$(DEF_COLOR)"
+				@echo "$(CYAN)So_Long executable files cleaned!$(DEF_COLOR)"
 
 re:			fclean all
-			@echo "$(GREEN)Cleaned and rebuilt everything for ft_Printf!$(DEF_COLOR)"
+			@echo "$(GREEN)Cleaned and rebuilt everything for So_Long!$(DEF_COLOR)"
 
 norm:
 			@norminette $(SRC) $(INCLUDES) | grep -v Norme -B1 || true
