@@ -34,7 +34,7 @@ WHITE = \033[0;97m
 #sources
 
 SRC_FILES	=	main read_map errors parser_map check_map game_start new_window \
-				xpm_image 
+				xpm_image render key_hook control_player
 
 SRC 		= 	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 OBJ 		= 	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))

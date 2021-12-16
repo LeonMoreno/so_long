@@ -75,17 +75,33 @@ void parse_map(int fd, t_game *game)
 {
 	char *line;
 	int i;
+	int gx;
 
-	i = 0;	
-	game->map = malloc(sizeof(char *) * game->map_size.y);
+	i = 0;
+	gx = 1;	
+	//game->map = malloc(sizeof(char *) * game->map_size.y);
+	game->map = malloc(sizeof(char *) * gx);
 	if (!game->map)
 		game->map = NULL;
 	while ((line = get_next_line(fd)))
 	{
+		game->map = ft_realloc((void *)game->map, sizeof(char *) * gx);
 		game->map[i] = line;
 		line = NULL;
 		i++;
+		gx++;
 	}
+
+	game->map_size.y =  i;
+	
+
 	game->map[i] = NULL;
 	game->map_size.x = get_map_size_x(game, i);
+
+	i = 0;
+	while (game->map[i])
+	{
+		ft_printf("Linea %d : %s\n", i, game->map[i]);
+		i++;
+	}
 }

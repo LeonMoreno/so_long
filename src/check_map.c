@@ -1,5 +1,20 @@
 #include "so_long.h"
 
+int ft_strchrx(char *str, char c)
+{
+	int i;
+	
+	i = 0;
+	while(str[i])
+	{
+		if(str[i] == c)
+			return (i);
+		i++;
+	}
+	return (0);
+}
+
+
 int valid_collec(char **str, int last)
 {
 	int i;
@@ -14,29 +29,39 @@ int valid_collec(char **str, int last)
 	return (0);
 }
 
-int valid_point_p(char **str, int last)
+int valid_point_p(t_game *game)
 {
 	int i;
-
+	int x;
+	
 	i = 1;
-	while(i < (last - 1))
+	while(i < (game->map_size.y - 1))
 	{
-		if (ft_strchr(str[i], 'P'))
+		if ((x = (ft_strchrx(game->map[i], 'P'))))
+		{
+			game->p_position.y = i * WIN_H;
+			game->p_position.x  = x * WIN_W;
 			return (1);
+		}
 		i++;
 	}
 	return (0);
 }
 
-int valid_point_e(char **str, int last)
+int valid_point_e(t_game *game)
 {
 	int i;
+	int x;
 
 	i = 1;
-	while(i < (last - 1))
+	while(i < (game->map_size.y - 1))
 	{
-		if (ft_strchr(str[i], 'E'))
+		if ((x = (ft_strchrx(game->map[i], 'E'))))
+		{
+			game->e_position.y = i * WIN_H;
+			game->e_position.x = x * WIN_W;
 			return (1);
+		}
 		i++;
 	}
 	return (0);
@@ -88,12 +113,12 @@ int check_map(t_game *game)
 		error("There must be at least one C");
 		return(0);
 	}
-	if(!valid_point_p(game->map, game->map_size.y))
+	if(!valid_point_p(game))
 	{
 		error("There must be at least one P");
 		return(0);
 	}
-	if(!valid_point_e(game->map, game->map_size.y))
+	if(!valid_point_e(game))
 	{
 		error("There must be at least one Point 'E' Exit");
 		return(0);
