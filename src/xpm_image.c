@@ -6,7 +6,7 @@
 /*   By: lmoreno <lmoreno@student.42quebec.>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 18:34:26 by lmoreno           #+#    #+#             */
-/*   Updated: 2021/12/16 18:41:02 by lmoreno          ###   ########.fr       */
+/*   Updated: 2021/12/17 14:30:19 by lmoreno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,4 +46,5 @@ void	xpm_image(t_game *game)
 	game->player = open_sprites(game->mlx, "sprites/ant_player.xpm");
 	game->rock = open_img_map(game->mlx, "sprites/rock.xpm");
 	game->coin = open_img_map(game->mlx, "sprites/coin1.xpm");
+	game->ensayo = open_img_map(game->mlx, "sprites/exit_ensayo.xpm");
 }

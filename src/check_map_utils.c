@@ -6,24 +6,31 @@
 /*   By: lmoreno <lmoreno@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 15:26:31 by lmoreno           #+#    #+#             */
-/*   Updated: 2021/12/16 16:47:11 by lmoreno          ###   ########.fr       */
+/*   Updated: 2021/12/17 13:12:47 by lmoreno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	valid_collec(char **str, int last)
+int	valid_collec(t_game *game)
 {
-	int	i;
+	int	y;
+	int x;
 
-	i = 1;
-	while (i < (last - 1))
+	y = 0;
+	game->colle = 0;
+	while (y < (game->map_size.y - 1))
 	{
-		if (ft_strchr(str[i], 'C'))
-			return (1);
-		i++;
+		x = 1;
+		while (x < game->map_size.x -1)
+		{
+			if (game->map[y][x] == 'C')
+				game->colle++;
+			x++;
+		}
+		y++;
 	}
-	return (0);
+	return (game->colle);
 }
 
 int	valid_point_p(t_game *game)

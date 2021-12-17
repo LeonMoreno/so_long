@@ -6,7 +6,7 @@
 /*   By: lmoreno <lmoreno@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 15:26:31 by lmoreno           #+#    #+#             */
-/*   Updated: 2021/12/16 16:51:24 by lmoreno          ###   ########.fr       */
+/*   Updated: 2021/12/17 13:21:28 by lmoreno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,14 @@ int	ft_strchrx(char *str, char c)
 
 int	check_condicions(t_game *game)
 {
-	if (!valid_collec(game->map, game->map_size.y))
+	if (!valid_collec(game))
 	{
-		error("There must be at least one C");
+		error("There must be at least one 'C'");
 		return (0);
 	}
 	if (!valid_point_p(game))
 	{
-		error("There must be at least one P");
+		error("There must be at least one 'P'");
 		return (0);
 	}
 	if (!valid_point_e(game))
@@ -43,6 +43,12 @@ int	check_condicions(t_game *game)
 		error("There must be at least one Point 'E' Exit");
 		return (0);
 	}
+	if (game->map_size.x == game->map_size.y)
+	{
+		error("The map must be rectangular");
+		return (0);
+	}
+
 	return (1);
 }
 

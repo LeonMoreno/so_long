@@ -6,7 +6,7 @@
 /*   By: lmoreno <lmoreno@student.42quebec.>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 16:55:00 by lmoreno           #+#    #+#             */
-/*   Updated: 2021/12/16 16:56:29 by lmoreno          ###   ########.fr       */
+/*   Updated: 2021/12/17 13:00:16 by lmoreno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,6 @@ void	game_init(t_game *game)
 	ft_printf("#### P Pos_Y : %d\n", game->p_position.y);
 	ft_printf("EE  Pos_X : %d\n", game->e_position.x);
 	ft_printf("EE  Pos_Y : %d\n", game->e_position.y);
+	ft_printf("Valor colle : %d\n", game->colle);
 	mlx_loop(game->mlx);
 }

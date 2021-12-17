@@ -6,7 +6,7 @@
 /*   By: lmoreno <lmoreno@student.42quebec.>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 19:15:37 by lmoreno           #+#    #+#             */
-/*   Updated: 2021/12/16 19:21:26 by lmoreno          ###   ########.fr       */
+/*   Updated: 2021/12/17 14:30:26 by lmoreno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,12 +54,13 @@ typedef struct s_game {
 	t_img_map	edge_bottom;
 	t_img_map	rock;
 	t_img_map	coin;
+	t_img_map	ensayo;
 	t_img_map	exit;
 	t_sprite	player;
 	t_vector	p_position;
 	t_vector	e_position;
 	int			colle;
-	int			p_start;
+//	int			p_start;
 	char		**map;
 }	t_game;
 
@@ -73,7 +74,7 @@ int			valid_wall(char **str, int last);
 int			valid_wall_inter(char **str, int last);
 int			get_map_size_y(int fd);
 int			ft_strchrx(char *str, char c);
-int			valid_collec(char **str, int last);
+int			valid_collec(t_game *game);
 int			valid_point_p(t_game *game);
 int			valid_point_e(t_game *game);
 
@@ -92,6 +93,7 @@ void		render_map_y(t_game *game, int y);
 void		render_sprites(t_game *game);
 void		render_muro_inter(t_game *game);
 void		render_coin(t_game *game);
+void		string_put(t_game *game);
 
 // Misc
 void		error(char *s);
