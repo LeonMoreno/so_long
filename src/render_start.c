@@ -6,7 +6,7 @@
 /*   By: lmoreno <lmoreno@student.42quebec.>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 18:15:17 by lmoreno           #+#    #+#             */
-/*   Updated: 2021/12/17 14:32:59 by lmoreno          ###   ########.fr       */
+/*   Updated: 2021/12/17 15:44:17 by lmoreno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,10 @@ void	render_start(t_game *game)
 	render_sprites(game);
 	render_muro_inter(game);
 	render_coin(game);
+	if (game->control_exit == 1)
+	{
+		string_put(game);
+		game->control_exit = 0;
+	}
 }
 

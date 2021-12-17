@@ -6,7 +6,7 @@
 /*   By: lmoreno <lmoreno@student.42quebec.>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 17:26:24 by lmoreno           #+#    #+#             */
-/*   Updated: 2021/12/17 14:57:22 by lmoreno          ###   ########.fr       */
+/*   Updated: 2021/12/17 15:48:10 by lmoreno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,10 @@
 
 void string_put(t_game *game)
 {
-	mlx_clear_window(game->mlx, game->wnd);		
-	mlx_put_image_to_window(game->mlx, game->wnd,
-					game->ensayo.id, 20,  20);
+	//mlx_put_image_to_window(game->mlx, game->wnd,
+					//game->ensayo.id, 20,  20);
 	//if (game->map[game->p_position.y][game->p_position.x] == 'E')
-		//	mlx_string_put(game->mlx, game->wnd, 10, 10, 0xffffff, "CHAO");
+			mlx_string_put(game->mlx, game->wnd, 10, 10, 0xffffff, "You must collect all the pieces");
 }
 
 void	render_muro_inter(t_game *game)
