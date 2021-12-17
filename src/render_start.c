@@ -1,28 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   render_start.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: LeoMoreno <lmoreno@student.42quebec.com    +#+  +:+       +#+        */
+/*   By: lmoreno <lmoreno@student.42quebec.>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/01 14:19:05 by LeoMoreno         #+#    #+#             */
-/*   Updated: 2021/12/16 18:41:36 by lmoreno          ###   ########.fr       */
+/*   Created: 2021/12/16 18:15:17 by lmoreno           #+#    #+#             */
+/*   Updated: 2021/12/16 18:31:59 by lmoreno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "so_long.h"
 
-void	*ft_memcpy(void *dst, const void *src, size_t n)
+void	render_start(t_game *game)
 {
-	size_t	i;
+	int	x;
 
-	if (!src && !dst)
-		return (NULL);
-	i = 0;
-	while (i < n)
-	{
-		((unsigned char *)dst)[i] = ((unsigned char *)src)[i];
-		i++;
-	}
-	return (dst);
+	x = 0;
+	mlx_clear_window(game->mlx, game->wnd);
+	x = render_map_x(game);
+	render_map_y(game, x);
+	render_sprites(game);
+	render_muro_inter(game);
+	render_coin(game);
 }
