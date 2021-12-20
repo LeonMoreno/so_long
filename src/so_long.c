@@ -1,28 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: LeoMoreno <lmoreno@student.42quebec.com    +#+  +:+       +#+        */
+/*   By: lmoreno <lmoreno@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/01 14:19:05 by LeoMoreno         #+#    #+#             */
-/*   Updated: 2021/12/16 18:41:36 by lmoreno          ###   ########.fr       */
+/*   Created: 2021/12/16 10:42:43 by lmoreno           #+#    #+#             */
+/*   Updated: 2021/12/16 10:46:13 by lmoreno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "so_long.h"
 
-void	*ft_memcpy(void *dst, const void *src, size_t n)
+int	main(int argc, char **argv)
 {
-	size_t	i;
+	t_game	game;
 
-	if (!src && !dst)
-		return (NULL);
-	i = 0;
-	while (i < n)
+	if (argc == 2)
 	{
-		((unsigned char *)dst)[i] = ((unsigned char *)src)[i];
-		i++;
+		game = init_map(argv[1]);
+		if (game.map == NULL)
+			return (0);
+		game_init(&game);
 	}
-	return (dst);
+	else
+		error("Invalid number of arguments");
+	return (0);
 }
