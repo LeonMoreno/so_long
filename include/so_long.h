@@ -6,7 +6,7 @@
 /*   By: lmoreno <lmoreno@student.42quebec.>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 19:15:37 by lmoreno           #+#    #+#             */
-/*   Updated: 2021/12/17 15:39:14 by lmoreno          ###   ########.fr       */
+/*   Updated: 2021/12/20 12:44:56 by lmoreno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,7 @@ void		render_sprites(t_game *game);
 void		render_muro_inter(t_game *game);
 void		render_coin(t_game *game);
 void		string_put(t_game *game);
+void		count_moves(t_game *game);
 
 // Misc
 void		error(char *s);
