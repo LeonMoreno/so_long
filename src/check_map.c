@@ -6,7 +6,7 @@
 /*   By: lmoreno <lmoreno@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 15:26:31 by lmoreno           #+#    #+#             */
-/*   Updated: 2021/12/17 13:21:28 by lmoreno          ###   ########.fr       */
+/*   Updated: 2021/12/20 15:07:57 by lmoreno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ int	check_condicions(t_game *game)
 		error("The map must be rectangular");
 		return (0);
 	}
-
 	return (1);
 }
 

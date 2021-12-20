@@ -6,11 +6,25 @@
 /*   By: lmoreno <lmoreno@student.42quebec.>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 18:15:17 by lmoreno           #+#    #+#             */
-/*   Updated: 2021/12/20 13:24:02 by lmoreno          ###   ########.fr       */
+/*   Updated: 2021/12/20 15:14:01 by lmoreno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+void	string_put(t_game *game)
+{
+	mlx_put_image_to_window(game->mlx, game->wnd,
+		game->ensayo.id, 20, 35);
+}
+
+void	count_moves(t_game *game)
+{
+	char	*moves;
+
+	moves = ft_itoa(game->moves);
+	mlx_string_put(game->mlx, game->wnd, 10, 1, 0xffffff, moves);
+}
 
 void	render_start(t_game *game)
 {
@@ -30,4 +44,3 @@ void	render_start(t_game *game)
 		game->control_exit = 0;
 	}
 }
-

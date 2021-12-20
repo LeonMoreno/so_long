@@ -6,7 +6,7 @@
 /*   By: lmoreno <lmoreno@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 15:26:31 by lmoreno           #+#    #+#             */
-/*   Updated: 2021/12/17 13:12:47 by lmoreno          ###   ########.fr       */
+/*   Updated: 2021/12/20 15:08:48 by lmoreno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	valid_collec(t_game *game)
 {
 	int	y;
-	int x;
+	int	x;
 
 	y = 0;
 	game->colle = 0;
