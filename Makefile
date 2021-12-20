@@ -6,7 +6,7 @@ SRC_DIR		= src/
 OBJ_DIR		= obj/
 CC 			= gcc
 CFLAGS			= -Wall -g -Wextra -Werror -I
-MLXFLAG		 	= -lmlx -framework OpenGL -framework AppKit
+MLXFLAG		 	= -framework OpenGL -framework AppKit
 RM			= rm -f
 
 #Libft
