@@ -6,7 +6,7 @@
 /*   By: lmoreno <lmoreno@student.42quebec.>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 16:51:38 by lmoreno           #+#    #+#             */
-/*   Updated: 2021/12/20 12:33:39 by lmoreno          ###   ########.fr       */
+/*   Updated: 2021/12/20 13:23:27 by lmoreno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	control_player_x(t_game *game, int x)
 	else if (game->map[game->p_position.y / 60][x / 60] == 'E')
 	{
 		if (game->colle != 0)
-			return (1);
+			game->control_exit = 1;
 		else if (game->colle == 0)
 		exit(0);
 	}
@@ -45,10 +45,7 @@ int	control_player_y(t_game *game, int y)
 	else if (game->map[y / 60][game->p_position.x / 60] == 'E')
 	{
 		if (game->colle != 0)
-		{
 			game->control_exit = 1;
-			ft_printf("No puedes Salir\n");
-		}
 		else if (game->colle == 0)
 		exit(0);
 	}

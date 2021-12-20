@@ -6,7 +6,7 @@
 /*   By: lmoreno <lmoreno@student.42quebec.>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 17:26:24 by lmoreno           #+#    #+#             */
-/*   Updated: 2021/12/20 12:45:33 by lmoreno          ###   ########.fr       */
+/*   Updated: 2021/12/20 15:00:40 by lmoreno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,10 @@ void string_put(t_game *game)
 
 void count_moves(t_game *game)
 {
+	char * moves;
 
-			mlx_string_put(game->mlx, game->wnd, 10, 1, 0xffffff, "MOves:");
+	moves = ft_itoa(game->moves);
+			mlx_string_put(game->mlx, game->wnd, 10, 1, 0xffffff, moves);
 }
 
 void	render_muro_inter(t_game *game)

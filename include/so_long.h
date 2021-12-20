@@ -6,7 +6,7 @@
 /*   By: lmoreno <lmoreno@student.42quebec.>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 19:15:37 by lmoreno           #+#    #+#             */
-/*   Updated: 2021/12/20 12:44:56 by lmoreno          ###   ########.fr       */
+/*   Updated: 2021/12/20 13:06:25 by lmoreno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ typedef struct s_game {
 	t_vector	e_position;
 	int			colle;
 	int			control_exit;
+	int			moves;
 //	int			p_start;
 	char		**map;
 }	t_game;
