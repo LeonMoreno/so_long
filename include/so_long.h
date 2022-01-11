@@ -13,22 +13,11 @@
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-<<<<<<< HEAD
-#include "mlx.h"
-#include <fcntl.h>
-
-#include "../libft/include/libft.h"
-
-#define WIN_W 60
-#define WIN_H 60
-
-=======
 # include <mlx.h>
 # include <fcntl.h>
 # include "../libft/include/libft.h"
 # define WIN_W 60
 # define WIN_H 60
->>>>>>> 4fc37536bcd86ebc06d67594763d35b90d1155e6
 
 // Estructuras
 typedef struct s_vector {
