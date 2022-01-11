@@ -6,7 +6,7 @@
 /*   By: lmoreno <lmoreno@student.42quebec.>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 16:56:54 by lmoreno           #+#    #+#             */
-/*   Updated: 2021/12/20 13:36:25 by lmoreno          ###   ########.fr       */
+/*   Updated: 2022/01/11 11:33:58 by lmoreno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ void	key_hook_x(int key, t_game *game)
 
 int	key_hook(int key, t_game *game)
 {
+	ft_printf("Tecla %d\n", key);
 	key_hook_x(key, game);
 	key_hook_y(key, game);
 	if (key == 53)
