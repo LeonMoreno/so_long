@@ -17,7 +17,7 @@ void	key_hook_y(int key, t_game *game)
 	int	j;
 
 	j = 0;
-	if (key == 125)
+	if (key == 115)
 	{
 		j = game->p_position.y + WIN_H;
 		if (control_player_y(game, j))
@@ -26,7 +26,7 @@ void	key_hook_y(int key, t_game *game)
 			game->moves++;
 		}
 	}
-	else if (key == 126)
+	else if (key == 119)
 	{
 		j = game->p_position.y - WIN_H;
 		if (control_player_y(game, j))
@@ -42,7 +42,7 @@ void	key_hook_x(int key, t_game *game)
 	int	j;
 
 	j = 0;
-	if (key == 124)
+	if (key == 100)
 	{
 		j = game->p_position.x + WIN_W;
 		if (control_player_x(game, j))
@@ -51,7 +51,7 @@ void	key_hook_x(int key, t_game *game)
 			game->moves++;
 		}
 	}
-	else if (key == 123)
+	else if (key == 97)
 	{
 		j = game->p_position.x - WIN_W;
 		if (control_player_x(game, j))
