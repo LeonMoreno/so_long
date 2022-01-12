@@ -7,7 +7,7 @@ OBJ_DIR		= obj/
 CC 			= gcc
 CFLAGS		= -Wall -Wextra -Werror -I
 MLX		= -L /usr/x11/lib/ -lmlx -lXext -lX11
-#MLX		= lmlx -framework OpenGL -framework AppKit
+#MLX		= -lmlx -framework OpenGL -framework AppKit
 RM			= rm -f
 
 #Libft
