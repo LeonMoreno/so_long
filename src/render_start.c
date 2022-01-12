@@ -24,6 +24,7 @@ void	count_moves(t_game *game)
 
 	moves = ft_itoa(game->moves);
 	mlx_string_put(game->mlx, game->wnd, 10, 1, 0xffffff, moves);
+	free(moves);
 }
 
 void	render_start(t_game *game)
