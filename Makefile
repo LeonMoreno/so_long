@@ -6,7 +6,8 @@ SRC_DIR		= src/
 OBJ_DIR		= obj/
 CC 			= gcc
 CFLAGS		= -Wall -Wextra -Werror -I
-MLX		 	= -lmlx -lXext -lX11
+MLX		= -L /usr/x11/lib/ -lmlx -lXext -lX11
+#MLX		= lmlx -framework OpenGL -framework AppKit
 RM			= rm -f
 
 #Libft
@@ -44,7 +45,7 @@ all:		$(NAME)
 $(NAME):	$(OBJ)
 			@echo "$(GRAY)     - Making libft... $(DEF_COLOR)"
 			@make -C $(LIBFT_DIR)	
-			$(CC) $(CFLAGS) $(INCLUDES) $(OBJ) $(LIBFT) -o $(NAME) -L /usr/x11/lib/ $(MLX)
+			$(CC) $(CFLAGS) $(INCLUDES) $(OBJ) $(LIBFT) -o $(NAME) $(MLX)
 			@echo "$(GREEN)so_long compiled!$(DEF_COLOR)"
 
 $(OBJ_DIR)%.o : $(SRC_DIR)%.c | $(OBJF)
