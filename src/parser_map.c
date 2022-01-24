@@ -38,12 +38,11 @@ int	get_map_size_x(t_game *game, int y)
 	while (i < y)
 	{
 		x = ft_strlen(game->map[i]);
-		if (compa != 0)	
-			if (compa != x)
-			{
-				error("Lines no iguales");
-				return (0);
-			}
+		if (compa != x && compa != 0)
+		{
+			error("Lines no iguales");
+			return (0);
+		}
 		compa = x;
 		i++;
 	}	

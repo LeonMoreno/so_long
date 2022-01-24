@@ -60,7 +60,7 @@ clean:
 			@make -C $(LIBFT_DIR) clean
 			@echo "$(BLUE)So_Long objects files cleaned!$(DEF_COLOR)"
 
-fclean:		clean
+fclean:				clean
 				@$(RM) -f $(NAME)
 				@make -C $(LIBFT_DIR) fclean
 				@echo "$(CYAN)So_Long executable files cleaned!$(DEF_COLOR)"
