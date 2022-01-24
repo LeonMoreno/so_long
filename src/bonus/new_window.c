@@ -1,25 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   game_start.c                                       :+:      :+:    :+:   */
+/*   new_window.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmoreno <lmoreno@student.42quebec.>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/16 16:55:00 by lmoreno           #+#    #+#             */
-/*   Updated: 2021/12/20 13:48:08 by lmoreno          ###   ########.fr       */
+/*   Created: 2021/12/16 17:22:56 by lmoreno           #+#    #+#             */
+/*   Updated: 2021/12/16 17:29:14 by lmoreno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	game_init(t_game *game)
+int	ft_close(void)
 {
-	game->mlx = mlx_init();
-	game->moves = 0;
-	game->control_exit = 0;
-	new_window(game, "lmoreno So_Long");
-	xpm_image(game);
-	render_start(game);
-	mlx_key_hook(game->wnd, key_hook, game);
-	mlx_loop(game->mlx);
+	exit(0);
+}
+
+void	new_window(t_game *game, char *msg)
+{
+	game->wnd_sz.x = game->map_size.x * WIN_W;
+	game->wnd_sz.y = game->map_size.y * WIN_H;
+	game->wnd = mlx_new_window(game->mlx, game->wnd_sz.x, game->wnd_sz.y, msg);
+	mlx_hook(game->wnd, 17, 0, ft_close, 0);
 }

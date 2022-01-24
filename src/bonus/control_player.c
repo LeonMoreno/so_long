@@ -19,6 +19,7 @@ int	control_player_x(t_game *game, int x)
 	else if (game->map[game->p_position.y / 60][x / 60] == 'C')
 	{
 		game->colle--;
+		ft_printf("Colle : %d\n", game->colle);
 		game->map[game->p_position.y / 60][x / 60] = '0';
 	}
 	else if (game->map[game->p_position.y / 60][x / 60] == 'E')
@@ -38,6 +39,7 @@ int	control_player_y(t_game *game, int y)
 	else if (game->map[y / 60][game->p_position.x / 60] == 'C')
 	{
 		game->colle--;
+		ft_printf("Colle : %d\n", game->colle);
 		game->map[y / 60][game->p_position.x / 60] = '0';
 	}
 	else if (game->map[y / 60][game->p_position.x / 60] == 'E')

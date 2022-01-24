@@ -20,8 +20,11 @@ void	string_put(t_game *game)
 
 void	count_moves(t_game *game)
 {
-	if (game->moves != 0)
-		ft_printf("Moves: %d\n", game->moves);
+	char	*moves;
+
+	moves = ft_itoa(game->moves);
+	mlx_string_put(game->mlx, game->wnd, 10, 1, 0xffffff, moves);
+	free(moves);
 }
 
 void	render_start(t_game *game)
