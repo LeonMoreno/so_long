@@ -1,3 +1,6 @@
+#Ignore .gitignored
+.gitignore
+
 # Ignora archivos del sistema Mac 
 .DS_store
 
@@ -18,6 +21,7 @@ node_modules
 
 # Ejecutables .out
 *.out
+so_long
 
 #Temp Files
 *.swp
