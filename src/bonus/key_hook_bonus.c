@@ -64,7 +64,6 @@ void	key_hook_x(int key, t_game *game)
 
 int	key_hook(int key, t_game *game)
 {
-	ft_printf("Tecla %d\n", key);
 	key_hook_x(key, game);
 	key_hook_y(key, game);
 	if (key == 53)

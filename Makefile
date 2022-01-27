@@ -3,7 +3,7 @@
 NAME 		= so_long
 INCLUDES	= include/
 SRC_DIR		= src/
-OBJ_DIR		= obj/
+SRC_DIR_BONUS	= src/bonus/
 CC 			= gcc
 CFLAGS		= -g -Wall -Wextra -Werror -I
 MLX		= -L /usr/x11/lib/ -lmlx -lXext -lX11
@@ -29,34 +29,53 @@ WHITE = \033[0;97m
 
 #sources
 
-SRC_FILES	=	so_long read_map errors parser_map check_map game_start new_window \
-				xpm_image render_start render_utils key_hook control_player check_map_utils
+SRC_FILES	=	so_long.c read_map.c errors.c parser_map.c check_map.c game_start.c new_window.c \
+				xpm_image.c render_start.c render_utils.c key_hook.c control_player.c check_map_utils.c
 
-SRC 		= 	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
-OBJ 		= 	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
-BONUS_OBJ	= 	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(BONUS_FILES)))
+SRC_BONUS_FILES	=	check_map_bonus.c \
+			check_map_utils_bonus.c \
+			control_player_bonus.c \
+			errors_bonus.c \
+			game_start_bonus.c \
+			key_hook_bonus.c \
+			new_window_bonus.c \
+			parser_map_bonus.c \
+			read_map_bonus.c \
+			render_start_bonus.c \
+			render_utils_bonus.c \
+			so_long_bonus.c \
+			xpm_image_bonus.c
+	
+SRC 		= 	$(addprefix $(SRC_DIR), $(SRC_FILES))
+
+SRC_BONUS 	= 	$(addprefix $(SRC_DIR_BONUS), $(SRC_BONUS_FILES))
+
+OBJ 		= 	$(SRC:.c=.o)
+
+OBJ_BONUS 	= 	$(SRC_BONUS:.c=.o)
 
 ###
-
-OBJF		=	.cache_exists
-
 all:		$(NAME)
 
 $(NAME):	$(OBJ)
 			@echo "$(GRAY)     - Making libft... $(DEF_COLOR)"
 			@make -C $(LIBFT_DIR)	
-			$(CC) $(CFLAGS) $(INCLUDES) $(OBJ) $(LIBFT) -o $(NAME) $(MLX)
+			$(CC) $(OBJ) $(LIBFT) -o $(NAME) $(MLX)
 			@echo "$(GREEN)so_long compiled!$(DEF_COLOR)"
 
-$(OBJ_DIR)%.o : $(SRC_DIR)%.c | $(OBJF)
-			@echo "$(YELLOW)Compiling: $< $(DEF_COLOR)"
-			@$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
-$(OBJF):
-			@mkdir -p $(OBJ_DIR)
+bonus:		$(OBJ_BONUS)
+			@echo "$(GRAY)     - Making libft... $(DEF_COLOR)"
+			@make -C $(LIBFT_DIR)	
+			$(CC) $(OBJ_BONUS) $(LIBFT) -o $(NAME) $(MLX)
+			@echo "$(GREEN)so_long compiled!$(DEF_COLOR)"
+
+.c.o :
+			@echo "$(YELLOW)Compiling: $< $(DEF_COLOR)"
+			$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $(<:.c=.o)
 
 clean:
-			@$(RM) -rf $(OBJ_DIR)
+			@$(RM) -rf $(OBJ) $(OBJ_BONUS)
 			@make -C $(LIBFT_DIR) clean
 			@echo "$(BLUE)So_Long objects files cleaned!$(DEF_COLOR)"
 
@@ -67,7 +86,6 @@ fclean:				clean
 
 re:			fclean all
 			@echo "$(GREEN)Cleaned and rebuilt everything for So_Long!$(DEF_COLOR)"
-
 norm:
 			@norminette $(SRC) $(INCLUDES) | grep -v Norme -B1 || true
 
