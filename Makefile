@@ -6,8 +6,8 @@ SRC_DIR		= src/
 SRC_DIR_BONUS	= src/bonus/
 CC 			= gcc
 CFLAGS		= -g -Wall -Wextra -Werror -I
-MLX		= -L /usr/x11/lib/ -lmlx -lXext -lX11
-#MLX		= -lmlx -framework OpenGL -framework AppKit
+#MLX		= -L /usr/x11/lib/ -lmlx -lXext -lX11
+MLX		= -lmlx -framework OpenGL -framework AppKit
 RM			= rm -f
 
 #Libft

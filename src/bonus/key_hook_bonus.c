@@ -6,7 +6,7 @@
 /*   By: lmoreno <lmoreno@student.42quebec.>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 16:56:54 by lmoreno           #+#    #+#             */
-/*   Updated: 2022/01/12 08:15:49 by lmoreno          ###   ########.fr       */
+/*   Updated: 2022/01/27 15:20:27 by lmoreno          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	key_hook_y(int key, t_game *game)
 	int	j;
 
 	j = 0;
-	if (key == 115)
+	if (key == 1)
 	{
 		j = game->p_position.y + WIN_H;
 		if (control_player_y(game, j))
@@ -26,7 +26,7 @@ void	key_hook_y(int key, t_game *game)
 			game->moves++;
 		}
 	}
-	else if (key == 119)
+	else if (key == 13)
 	{
 		j = game->p_position.y - WIN_H;
 		if (control_player_y(game, j))
@@ -42,7 +42,7 @@ void	key_hook_x(int key, t_game *game)
 	int	j;
 
 	j = 0;
-	if (key == 100)
+	if (key == 2)
 	{
 		j = game->p_position.x + WIN_W;
 		if (control_player_x(game, j))
@@ -51,7 +51,7 @@ void	key_hook_x(int key, t_game *game)
 			game->moves++;
 		}
 	}
-	else if (key == 97)
+	else if (key == 0)
 	{
 		j = game->p_position.x - WIN_W;
 		if (control_player_x(game, j))
