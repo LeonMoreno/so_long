@@ -22,7 +22,7 @@
 
 so_long in action !!
 
-<img src="img/so_long.gif" width="800"/>
+<img src="img/so_long.gif" width="1200"/>
 
 ## Skills:
 * Rigor
